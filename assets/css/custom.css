@@ -1,0 +1,136 @@
+/* Centralized custom styles extracted from PHP files */
+
+/* Material symbols tuning (from header.php) */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Small layout helpers used across pages */
+.card-bg {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Default body background gradient if not overridden by Tailwind */
+body.bg-gradient-custom {
+  background-image: linear-gradient(to bottom, #E0F7FA, #FFFFFF);
+}
+
+/* Utility: soft shadow used in several places */
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+}
+
+/* Header theme: sea-blue gradient and white text */
+.header-sea {
+  background: linear-gradient(90deg, #0ea5a7 0%, #0284c7 50%, #0369a1 100%); /* teal -> sky -> deep blue */
+}
+.header-sea .nav-link,
+.header-sea .brand-title,
+.header-sea .material-symbols-outlined {
+  color: #ffffff !important;
+}
+
+/* Buttons in header */
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.btn-primary-filled {
+  background: linear-gradient(90deg,#38bdf8,#0ea5a7);
+  color: #04293a;
+  font-weight: 700;
+}
+
+/* Slight glass effect for header */
+.header-glass {
+  backdrop-filter: blur(6px);
+}
+/* Major detail card styling: colorful, non-gray background for dark mode */
+.major-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,251,255,0.95));
+  color: #062a3b;
+}
+.major-card.dark,
+.dark .major-card {
+  /* brighter, more attractive teal/blue gradient for dark mode */
+  background: linear-gradient(180deg, #052f3f 0%, #045e71 50%, #017a9b 100%);
+  color: #e6fbff;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 18px rgba(1,26,40,0.45);
+}
+.major-card .btn-back {
+  background: linear-gradient(90deg,#60a5fa,#06b6d4);
+  color: #04293a;
+  font-weight: 700;
+}
+
+/* Ensure the back button remains readable in dark mode */
+.dark .major-card .btn-back,
+.major-card.dark .btn-back {
+  background: linear-gradient(90deg,#14b8a6,#06b6d4);
+  color: #04293a;
+  box-shadow: 0 4px 12px rgba(2,132,199,0.18);
+}
+
+/* Major grid item appearance and stable icon layout */
+.majorItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.majorItem .material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.25rem; /* fixed width to avoid shifting */
+  text-align: center;
+}
+/* Prevent movement on press/click - use box-shadow for focus highlight */
+.majorItem:active,
+.majorItem:focus { transform: none; }
+.majorItem:focus { outline: none; box-shadow: 0 0 0 4px rgba(6,41,59,0.06); border-radius: 8px; }
+.majorItem:hover { background-color: rgba(6,41,59,0.04); }
+
+/* Make icons slightly colored to match category */
+.majorItem[data-cat="R"] .material-symbols-outlined { color: #fb923c; } /* orange */
+.majorItem[data-cat="I"] .material-symbols-outlined { color: #60a5fa; } /* blue */
+.majorItem[data-cat="A"] .material-symbols-outlined { color: #f472b6; } /* pink */
+.majorItem[data-cat="S"] .material-symbols-outlined { color: #34d399; } /* teal */
+.majorItem[data-cat="E"] .material-symbols-outlined { color: #f59e0b; } /* amber */
+.majorItem[data-cat="C"] .material-symbols-outlined { color: #a78bfa; } /* purple */
+
+/* Filter buttons (the pills above the majors grid) - keep icons/labels stable on press */
+.filterBtn {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+  box-sizing: border-box;
+  transition: background-color 140ms ease, transform 120ms ease;
+}
+.filterBtn:active,
+.filterBtn:focus { transform: none !important; outline: none; }
+.filterBtn:focus { box-shadow: 0 0 0 3px rgba(2,132,199,0.12); }
+
+/* Ensure material icons used inside buttons/links don't shift */
+.filterBtn .material-symbols-outlined,
+.majorItem .material-symbols-outlined {
+  width: 1.3rem; /* fixed width */
+  height: 1.3rem; /* fixed height */
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* On touch devices some browsers add a subtle translateZ on active - explicitly reset */
+.majorItem:active,
+.filterBtn:active { -webkit-transform: translateZ(0); transform: translateZ(0); }
+
